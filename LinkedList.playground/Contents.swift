@@ -45,7 +45,7 @@ public class LinkedList {
     /// - Parameter value: <#value description#>
     public func append(value: String) {
         let newNode = Node(value: value)
-   
+        
         if let tailNode = tail {
             tailNode.next = newNode
             newNode.previous = tailNode
@@ -104,8 +104,8 @@ public class LinkedList {
     }
     
     public subscript(index: Int) -> Node? {
-      let node = nodeAt(index: index)
-      return node
+        let node = nodeAt(index: index)
+        return node
     }
     
     
@@ -116,7 +116,7 @@ public class LinkedList {
     ///   - index: <#index description#>
     public func insert(element: String, index: Int) {
         let newNode = Node(value: element)
-      
+        
         if index == 0 {
             newNode.next = head
             head?.previous = newNode
