@@ -134,6 +134,7 @@ public class LinkedList {
     }
 }
 
+
 extension LinkedList: CustomStringConvertible {
     public var description: String {
         var text = "["
@@ -153,6 +154,37 @@ extension LinkedList: CustomStringConvertible {
 }
 
 
+// MARK: - Reverse Linked, list
+extension LinkedList {
+    
+    func reverse() {
+        var currentNode = head
+        var prevNode: Node?
+        var nextNode: Node?
+        
+        while currentNode != nil {
+            nextNode = currentNode?.next
+            currentNode?.next = prevNode
+            prevNode = currentNode
+            currentNode = nextNode
+        }
+        head = prevNode
+    }
+    
+    //Reverse each word in a linked list node
+    func reverseEachNodeValue() {
+        var currentNode = head
+        print("\n\n -------- Reverse each node value---------\n")
+        while currentNode != nil {
+            let words = currentNode!.value.components(separatedBy: " ")
+            print(words)
+            currentNode = currentNode?.next
+        }
+        print("\n -------- Reverse each node value---------\n\n")
+    }
+}
+
+
 let dogBreeds = LinkedList()
 dogBreeds.append(value: "Labrador")
 dogBreeds.append(value: "Beagle")
@@ -160,10 +192,11 @@ dogBreeds.append(value: "Bulldog")
 dogBreeds.append(value: "Husky")
 
 print(dogBreeds)
+
+dogBreeds.reverseEachNodeValue()
+
+//dogBreeds.remove(node: dogBreeds[3]!)
+//dogBreeds.insert(element: "Doggy", index: 4)
+//print(dogBreeds)
+dogBreeds.reverse()
 print(dogBreeds)
-
-dogBreeds.remove(node: dogBreeds[3]!)
-dogBreeds.insert(element: "Doggy", index: 4)
-print(dogBreeds)
-
-
