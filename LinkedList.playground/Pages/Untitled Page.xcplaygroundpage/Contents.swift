@@ -5,9 +5,6 @@ import Foundation
 //A linked list is a sequence of data items, where each item is referred to as a node.
 //There are two main types of linked lists:
 //Singly linked lists, are linked lists where each node only has a reference to the next node.
-
-//Singly linked lists, are linked lists where each node only has a reference to the next node.
-
 //Doubly linked lists, are linked lists where each node has a reference to the previous and next node.
 
 
@@ -61,19 +58,16 @@ public class LinkedList {
     /// - Parameter index: <#index description#>
     /// - Returns: <#return value description#>
     public func nodeAt(index: Int) -> Node? {
-        
-        if index >= 0 {
-            var node = head
-            var i = index
-            while node != nil {
-                if i == 0 {
-                    return node
-                }
-                i -= 1
-                node = node!.next
+        var curr = head
+        if index == 0 {
+            return curr
+        }
+        for _ in 1...index {
+            if curr != nil {
+                curr = curr?.next
             }
         }
-        return nil
+        return curr
     }
     
     public func remove(node: Node) -> String {
@@ -104,8 +98,16 @@ public class LinkedList {
     }
     
     public subscript(index: Int) -> Node? {
-        let node = nodeAt(index: index)
-        return node
+        var curr = head
+        if index == 0 {
+            return curr
+        }
+        for _ in 1...index {
+            if curr != nil {
+                 curr = curr?.next
+            }
+        }
+        return curr
     }
     
     
@@ -193,10 +195,14 @@ dogBreeds.append(value: "Husky")
 
 print(dogBreeds)
 
-dogBreeds.reverseEachNodeValue()
+print(dogBreeds.nodeAt(index: 3)?.value)
+print(dogBreeds[3]?.value)
+
+
+dogBreeds.reverse()
+print(dogBreeds)
+
 
 //dogBreeds.remove(node: dogBreeds[3]!)
 //dogBreeds.insert(element: "Doggy", index: 4)
 //print(dogBreeds)
-dogBreeds.reverse()
-print(dogBreeds)
